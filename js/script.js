@@ -5,7 +5,7 @@ function loadMovies() {
     return JSON.parse(storedMovies);
   }
 
-  // Caso não hajam dados no LocalStorage, irei carregat estes dados mocados.
+  // Caso não hajam dados no LocalStorage, irei carregar estes dados mocados.
   return [
     {
       id: '1',
