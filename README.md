@@ -7,5 +7,5 @@ O objetivo deste projeto é desenvolver um sistema que permita aos usuários vot
 ## Tecnologias Propostas
 
 - HTML
-- JavaScript (puro);
-- CSS (SASS);
+- CSS;
+- JavaScript (puro).
