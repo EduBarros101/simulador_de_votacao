@@ -17,53 +17,43 @@
 
       <nav id="navbar">
         <ul>
-          <li><a href="#total-counters">Votos Gerais</a></li>
-          <li><a href="#movies-list">Catálogo</a></li>
-          <li><a href="#movie-registration">Cadastrar</a></li>
+          <li><a href="#movie-list">Filmes/Séries</a></li>
+          <li><a href="#add-new">Adicionar Novo</a></li>
+          <li><a href="#global-votes">Votos Gobais</a></li>
         </ul>
       </nav>
     </header>
 
     <main>
-      <section id="total-counters">
-        <h1>Votação de Filmes e Séries - Mosten</h1>
-        <div class="counters-group">
-          <h2>Votos Gerais</h2>
-          <p>Total de Likes: <span id="total-likes">0</span></p>
-          <p>Total de Dislikes: <span id="total-dislikes">0</span></p>
-        </div>
+      <section id="movie-list" class="full-screen-section">
+        <h1>Filmes e Séries</h1>
+        <div id="movies-container" class="grid-container"></div>
       </section>
 
-      <section id="movies-list">
-        <h2>Catálogo</h2>
-      </section>
-
-      <section id="movie-registration">
+      <section id="add-new" class="full-screen-section">
         <h2>Cadastro de novo Filme/Série</h2>
 
-        <form id="form-registration">
-          <div class="form-group">
-            <label for="title">Título</label>
-            <input type="text" name="title" id="title" required />
-          </div>
+        <form id="add-movie-form">
+          <label for="title">Título</label>
+          <input type="text" name="title" id="title" required />
 
-          <div class="form-group">
-            <label for="genre">Gênero</label>
-            <input type="text" name="genre" id="genre" required />
-          </div>
+          <label for="genre">Gênero</label>
+          <input type="text" name="genre" id="genre" required />
 
-          <div class="form-group">
-            <label for="image">URL da imagem</label>
-            <input type="url" name="image" id="image" required />
-          </div>
+          <label for="image">URL da imagem</label>
+          <input type="url" name="image" id="image" required />
 
-          <div class="form-group">
-            <label for="description">Descrição</label>
-            <textarea name="description" id="description" required></textarea>
-          </div>
+          <label for="description">Descrição</label>
+          <textarea name="description" id="description" required></textarea>
 
           <button type="submit">Cadastrar</button>
         </form>
+      </section>
+
+      <section id="global-votes" class="full-screen-section">
+        <h2>Votos Globais</h2>
+        <p>Total de Likes: <span id="global-positive-votes">0</span></p>
+        <p>Total de Dislikes: <span id="global-negative-votes">0</span></p>
       </section>
     </main>
 
