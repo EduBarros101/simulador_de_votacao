@@ -8,4 +8,4 @@ O objetivo deste projeto é desenvolver um sistema que permita aos usuários vot
 
 - HTML
 - CSS;
-- JavaScript (puro).
+- JavaScript (Vanilla).
