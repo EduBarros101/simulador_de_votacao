@@ -3,12 +3,54 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="assets/css/style.css" />
     <title>Simulador de Votação de Filmes e Séries</title>
   </head>
   <body>
     <header>
-      <h1>Mosten - Votação de Filmes e Séries</h1>
+      <h1>Votação de Filmes e Séries - Mosten</h1>
+      <div class="geral-counters">
+        <h2>Votos Gerais</h2>
+        <p>Total de Votos Gerais: <span id="total-geral">0</span></p>
+        <p>Total de Likes: <span id="total-likes">0</span></p>
+        <p>Total de Dislikes: <span id="total-dislikes">0</span></p>
+      </div>
     </header>
+
+    <main>
+      <section id="movies-list">
+        <h2>Catálogo</h2>
+      </section>
+
+      <section id="movie-registration">
+        <h2>Cadastro de novo Filme/Série</h2>
+
+        <form id="form-registration">
+          <div class="form-group">
+            <label for="title">Título</label>
+            <input type="text" name="title" id="title" required />
+          </div>
+
+          <div class="form-group">
+            <label for="genre">Gênero</label>
+            <input type="text" name="genre" id="genre" required />
+          </div>
+
+          <div class="form-group">
+            <label for="image">URL da imagem</label>
+            <input type="url" name="image" id="image" required />
+          </div>
+
+          <div class="form-group">
+            <label for="description">Descrição</label>
+            <textarea name="description" id="description" required></textarea>
+          </div>
+
+          <button type="submit">Cadastrar</button>
+        </form>
+      </section>
+    </main>
+
+    <script src="js/script.js"></script>
   </body>
 </html>
