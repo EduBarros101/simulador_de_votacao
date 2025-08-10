@@ -25,7 +25,13 @@ a {
   color: white;
 }
 
-/* Lidando com o header */
+button {
+  border: 2px solid #eeba2c;
+  border-radius: 0.3rem;
+  background-color: transparent;
+  color: white;
+}
+
 header {
   display: flex;
   position: fixed;
@@ -41,11 +47,11 @@ header div {
   gap: 0 2rem;
 }
 
-header #navbar ul li :hover {
+header ul li :hover {
   text-decoration: underline;
 }
 
-header #navbar ul {
+header ul {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -60,6 +66,23 @@ section {
 #movie-list {
   min-height: 100vh;
   background-color: #1b1b1b;
+}
+
+#movies-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  max-width: 80rem;
+}
+
+.movie-card {
+  width: 20rem;
+}
+
+.movie-card img {
+  width: 100%;
 }
 
 #add-new,
