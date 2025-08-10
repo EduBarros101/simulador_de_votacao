@@ -6,8 +6,8 @@
       "genero": "Ficção Científica, Ação",
       "descricao": "Um programador de computador descobre que a realidade é uma simulação.",
       "imagem": "https://revistacontinente.com.br/image/view/news/image/2117/mobile",
-      "gostei": 9,
-      "naoGostei": 6
+      "gostei": 0,
+      "naoGostei": 0
     },
     {
       "id": "2",
@@ -15,8 +15,8 @@
       "genero": "Ficção Científica",
       "descricao": "Uma equipe de exploradores viaja através de um buraco de minhoca.",
       "imagem": "https://beam-images.warnermediacdn.com/BEAM_LWM_DELIVERABLES/aa5b9295-8f9c-44f5-809b-3f2b84badfbf/74a67d78-7c7e-47e8-9603-20fe2a00eae4?host=wbd-images.prod-vod.h264.io&partner=beamcom",
-      "gostei": 16,
-      "naoGostei": 7
+      "gostei": 0,
+      "naoGostei": 0
     },
     {
       "id": "3",
@@ -24,8 +24,8 @@
       "genero": "Ficção Científica, Ação",
       "descricao": "Um ladrão que rouba segredos corporativos através do uso de tecnologia de sonho.",
       "imagem": "https://m.media-amazon.com/images/S/pv-target-images/3f122417c55feda5c465f701320892661bfea27c1dfcff81e7fb0641ba29171c._SX1080_FMjpg_.jpg",
-      "gostei": 4,
-      "naoGostei": 4
+      "gostei": 0,
+      "naoGostei": 0
     },
     {
       "id": "4",
@@ -33,8 +33,8 @@
       "genero": "Fantasia, Aventura",
       "descricao": "Um hobbit herda um anel poderoso e embarca em uma jornada épica.",
       "imagem": "https://i.ytimg.com/vi/Xy3nzSMZ4-M/maxresdefault.jpg",
-      "gostei": 9,
-      "naoGostei": 2
+      "gostei": 0,
+      "naoGostei": 0
     },
     {
       "id": "5",
@@ -42,8 +42,8 @@
       "genero": "Ação, Ficção Científica",
       "descricao": "Uma equipe de soldados de elite em uma missão na América Central é caçada por um guerreiro extraterrestre.",
       "imagem": "https://cloud.estacaonerd.com/wp-content/uploads/2022/08/07110252/PREDADOOR.jpg",
-      "gostei": 4,
-      "naoGostei": 3
+      "gostei": 0,
+      "naoGostei": 0
     }
   ]
 }
