@@ -62,9 +62,24 @@ section {
   background-color: #1b1b1b;
 }
 
-#add-new {
+#add-new,
+#add-movie-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+
+  min-width: 30rem;
   height: 100vh;
   background-color: #212121;
+}
+
+#add-movie-form div,
+#add-movie-form label,
+#add-movie-form input,
+#add-movie-form textarea {
+  min-width: 100%;
 }
 
 #global-votes {
