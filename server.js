@@ -34,7 +34,7 @@ app.get('/api/movies', async (req, res) => {
   res.json(db.movies);
 });
 
-app.post('api/movies', async (req, res) => {
+app.post('/api/movies', async (req, res) => {
   const db = await readDb();
   const newMovie = {
     id: String(Date.now()),

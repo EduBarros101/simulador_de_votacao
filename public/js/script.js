@@ -30,7 +30,7 @@ async function fetchMovies() {
 
 async function sendVote(id, type) {
   try {
-    const reponse = await fetch(`${API_BASE_URL}/movies/${id}/vote}`, {
+    const response = await fetch(`${API_BASE_URL}/movies/${id}/vote`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -39,7 +39,7 @@ async function sendVote(id, type) {
     });
 
     if (!response.ok) {
-      throw new Error(`Erro HTTP! Status: ${response.statis}`);
+      throw new Error(`Erro HTTP! Status: ${response.status}`);
     }
 
     const updateMovie = await response.json();
@@ -186,4 +186,4 @@ addMoviesForm.addEventListener('submit', (e) => {
   // alert('Filme/Série cadastrada com sucesso!');
 });
 
-document.addEventListener('DOMContentLoaded', renderAllMovies);
+document.addEventListener('DOMContentLoaded', fetchMovies);
