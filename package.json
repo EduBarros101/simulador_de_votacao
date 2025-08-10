@@ -1,0 +1,24 @@
+{
+  "name": "simulador_de_votacao",
+  "version": "1.0.0",
+  "description": "## Simulador de votação de filmes/séries",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EduBarros101/simulador_de_votacao.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/EduBarros101/simulador_de_votacao/issues"
+  },
+  "homepage": "https://github.com/EduBarros101/simulador_de_votacao#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^5.1.0"
+  }
+}
