@@ -1,73 +1,6 @@
-// Vou simular a persistência dos dados usando LocalStorage.
-function loadMovies() {
-  const storedMovies = localStorage.getItem('movies');
-  if (storedMovies) {
-    return JSON.parse(storedMovies);
-  }
+const API_BASE_URL = 'http://localhost:3000/api';
 
-  // Caso não hajam dados no LocalStorage, irei carregar estes dados mocados.
-  return [
-    {
-      id: '1',
-      titulo: 'O Poderoso Chefão',
-      genero: 'Drama, Crime',
-      descricao: 'Um épico sobre a família mafiosa Corleone.',
-      imagem:
-        'https://via.placeholder.com/150/FF5733/FFFFFF?text=Poderoso+Chefao',
-      gostei: 0,
-      naoGostei: 0,
-    },
-    {
-      id: '2',
-      titulo: 'Interestelar',
-      genero: 'Ficção Científica',
-      descricao:
-        'Uma equipe de exploradores viaja através de um buraco de minhoca.',
-      imagem: 'https://via.placeholder.com/150/33FF57/FFFFFF?text=Interestelar',
-      gostei: 0,
-      naoGostei: 0,
-    },
-    {
-      id: '3',
-      titulo: 'A Origem',
-      genero: 'Ficção Científica, Ação',
-      descricao:
-        'Um ladrão que rouba segredos corporativos através do uso de tecnologia de sonho.',
-      imagem: 'https://via.placeholder.com/150/5733FF/FFFFFF?text=A+Origem',
-      gostei: 0,
-      naoGostei: 0,
-    },
-    {
-      id: '4',
-      titulo: 'Matrix',
-      genero: 'Ficção Científica, Ação',
-      descricao:
-        'Um programador de computador descobre que a realidade é uma simulação.',
-      imagem:
-        'https://revistacontinente.com.br/image/view/news/image/2117/mobile',
-      gostei: 0,
-      naoGostei: 0,
-    },
-    {
-      id: '5',
-      titulo: 'O Senhor dos Anéis: A Sociedade do Anel',
-      genero: 'Fantasia, Aventura',
-      descricao:
-        'Um hobbit herda um anel poderoso e embarca em uma jornada épica.',
-      imagem: 'https://via.placeholder.com/150/33FFFF/000000?text=Senhor+Aneis',
-      gostei: 0,
-      naoGostei: 0,
-    },
-  ];
-}
-
-// Criando a função para salvar os dados no LocalStorage.
-function saveMovies(movies) {
-  localStorage.setItem('movies', JSON.stringify(movies));
-}
-
-// Carregando os dados na variável.
-let movies = loadMovies();
+let movies = [];
 
 const moviesContainer = document.getElementById('movies-container');
 const addMoviesForm = document.getElementById('add-movie-form');
@@ -77,6 +10,96 @@ const globalPositiveVotesSpan = document.getElementById(
 const globalNegativeVotesSpan = document.getElementById(
   'global-negative-votes'
 );
+
+// Interações com a API
+
+async function fetchMovies() {
+  try {
+    const response = await fetch(`${API_BASE_URL}/movies`);
+
+    if (!response.ok) {
+      throw new Error(`Erro HTTP! Status: ${response.status}`);
+    }
+
+    movies = await response.json();
+    renderAllMovies();
+  } catch (error) {
+    console.error('Erro ao buscar filmes: ', error);
+  }
+}
+
+async function sendVote(id, type) {
+  try {
+    const reponse = await fetch(`${API_BASE_URL}/movies/${id}/vote}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ type }),
+    });
+
+    if (!response.ok) {
+      throw new Error(`Erro HTTP! Status: ${response.statis}`);
+    }
+
+    const updateMovie = await response.json();
+    const movieIndex = movies.findIndex((m) => m.id === id);
+
+    if (movieIndex > -1) {
+      movies[movieIndex] = updateMovie;
+    }
+
+    updateMovieCard(id);
+    updateGlobalVotes();
+  } catch (error) {
+    console.log('Ocorreu um erro ao enviar seu voto: ', error);
+  }
+}
+
+async function addMovieToApi(newMovieData) {
+  try {
+    const response = await fetch(`${API_BASE_URL}/movies`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(newMovieData),
+    });
+
+    if (!response.ok) {
+      throw new Error(`Erro HTTP! Status: ${response.status}`);
+    }
+
+    const addedMovie = await response.json();
+
+    movies.push(addedMovie);
+    moviesContainer.appendChild(renderMovie(addedMovie));
+    updateGlobalVotes();
+    addMoviesForm.reset();
+
+    alert('Filme/Série cadastrada com sucesso! :)');
+  } catch (error) {
+    console.log('Erro ao cadastrar filme: ', error);
+    alert('Ocorreu um erro ao cadastrar seu Filme/Série.');
+  }
+}
+
+async function fetchGlobalVotes() {
+  try {
+    const response = await fetch(`${API_BASE_URL}/global-votes`);
+
+    if (!response.ok) {
+      throw new Error(`Erro HTTP! Status: ${response.status}`);
+    }
+
+    const data = await response.json();
+
+    globalPositiveVotesSpan.textContent = data.totalPositive;
+    globalNegativeVotesSpan.textContent = data.totalNegative;
+  } catch (error) {
+    console.log('Erro ao buscar votos globais: ', error);
+  }
+}
 
 // Renderizando
 function renderMovie(movie) {
@@ -99,10 +122,10 @@ function renderMovie(movie) {
   // Adicionando event listeners para os botões de voto.
   movieCard
     .querySelector('.like-button')
-    .addEventListener('click', () => handleVote(movie.id, 'like'));
+    .addEventListener('click', () => sendVote(movie.id, 'like'));
   movieCard
     .querySelector('.dislike-button')
-    .addEventListener('click', () => handleVote(movie.id, 'dislike'));
+    .addEventListener('click', () => sendVote(movie.id, 'dislike'));
 
   return movieCard;
 }
@@ -113,22 +136,7 @@ function renderAllMovies() {
     moviesContainer.appendChild(renderMovie(movie));
   });
 
-  updateGlobalVotes();
-}
-
-function handleVote(id, type) {
-  const movieIndex = movies.findIndex((m) => m.id === id);
-  if (movieIndex > -1) {
-    if (type === 'like') {
-      movies[movieIndex].gostei++;
-    } else if (type === 'dislike') {
-      movies[movieIndex].naoGostei++;
-    }
-
-    saveMovies(movies); // Salvando os dados atualizados.
-    updateMovieCard(id); // Atualizando apenas o card do filme.
-    updateGlobalVotes();
-  }
+  fetchGlobalVotes();
 }
 
 function updateMovieCard(id) {
@@ -161,22 +169,21 @@ function updateGlobalVotes() {
 addMoviesForm.addEventListener('submit', (e) => {
   e.preventDefault();
 
-  const newMovie = {
-    id: String(Date.now()), // Gerando um ID único baseado no timestamp. Preciso pesquisar se há outra forma melhor.
+  const newMovieData = {
     titulo: document.getElementById('title').value,
     genero: document.getElementById('genre').value,
     imagem: document.getElementById('image').value,
     descricao: document.getElementById('description').value,
-    gostei: 0,
-    naoGostei: 0,
   };
 
-  movies.push(newMovie);
-  saveMovies(movies);
-  moviesContainer.appendChild(renderMovie(newMovie)); // Adicionando o novo filme à lista com o appendChild.
-  updateGlobalVotes();
-  addMoviesForm.reset(); // Para limpar o formulário.
-  alert('Filme/Série cadastrada com sucesso!');
+  addMovieToApi(newMovieData); // Para interagir com a API
+
+  // movies.push(newMovie);
+  // saveMovies(movies);
+  // moviesContainer.appendChild(renderMovie(newMovie)); // Adicionando o novo filme à lista com o appendChild.
+  // updateGlobalVotes();
+  // addMoviesForm.reset(); // Para limpar o formulário.
+  // alert('Filme/Série cadastrada com sucesso!');
 });
 
 document.addEventListener('DOMContentLoaded', renderAllMovies);
