@@ -93,7 +93,7 @@ function renderMovie(movie) {
     <button class="vote-button like-button" data-type="like">Gostei</button>
     <span class="positive-count">${movie.gostei}</span>
     <button class="vote-button dislike-button" data-type="dislike">Não Gostei</button>
-    <span clarr="negative-count">${movie.naoGostei}</span>
+    <span class="negative-count">${movie.naoGostei}</span>
   `;
 
   // Adicionando event listeners para os botões de voto.
@@ -135,7 +135,7 @@ function updateMovieCard(id) {
   const movie = movies.find((m) => m.id === id);
 
   if (movie) {
-    const movieCard = document.querySelector(`.movie-card[data-id"${id}"]`);
+    const movieCard = document.querySelector(`.movie-card[data-id="${id}"]`);
     if (movieCard) {
       movieCard.querySelector('.positive-count').textContent = movie.gostei;
       movieCard.querySelector('.negative-count').textContent = movie.naoGostei;
