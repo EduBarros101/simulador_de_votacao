@@ -6,7 +6,73 @@
   list-style: none;
 }
 
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 2rem;
+
+  font-family: 'Montserrat', sans-serif;
+  color: white;
+}
+
+h1,
+h2,
+h3 {
+  color: #eeba2c;
+}
+
 a {
   text-decoration: none;
-  color: inherit;
+  color: white;
+}
+
+/* Lidando com o header */
+header {
+  display: flex;
+  position: fixed;
+  width: 100vw;
+  padding: 0 2rem;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #1b1b1b;
+}
+
+header div {
+  display: flex;
+  gap: 0 2rem;
+}
+
+header #navbar ul li :hover {
+  text-decoration: underline;
+}
+
+header #navbar ul {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  height: 4rem;
+}
+
+section {
+  padding: 4rem;
+}
+
+#movie-list {
+  min-height: 100vh;
+  background-color: #1b1b1b;
+}
+
+#add-new {
+  height: 100vh;
+  background-color: #212121;
+}
+
+#global-votes {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  height: 100vh;
+  background-color: #1b1b1b;
 }
