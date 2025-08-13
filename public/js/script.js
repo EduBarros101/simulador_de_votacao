@@ -177,13 +177,6 @@ addMoviesForm.addEventListener('submit', (e) => {
   };
 
   addMovieToApi(newMovieData); // Para interagir com a API
-
-  // movies.push(newMovie);
-  // saveMovies(movies);
-  // moviesContainer.appendChild(renderMovie(newMovie)); // Adicionando o novo filme à lista com o appendChild.
-  // updateGlobalVotes();
-  // addMoviesForm.reset(); // Para limpar o formulário.
-  // alert('Filme/Série cadastrada com sucesso!');
 });
 
 document.addEventListener('DOMContentLoaded', fetchMovies);
